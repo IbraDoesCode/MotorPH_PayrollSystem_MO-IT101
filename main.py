@@ -2,7 +2,7 @@ from functions import *
 from database import employee_data
 from art import logo
 
-print(logo, "\n")
+print(logo)
 
 while True:
     print("\n=== MENU ===")
@@ -45,6 +45,7 @@ while True:
         total_deductions = sss + pagibig + philhealth
         withholding_tax = calcuate_witholdingTax(gross)
         net_salary = round(calculate_net(gross, withholding_tax), 2)
+
         print("\n--- Net Salary Details ---")
         print(f"Gross income: {gross}")
         print(f"SSS contribution: {sss}")
@@ -54,7 +55,7 @@ while True:
         print(f"Net salary: {net_salary}")
 
     elif action == "4":
-        print("Exiting the program...")
+        print("Exiting the system...")
         break
 
     else:
