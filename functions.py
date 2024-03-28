@@ -1,7 +1,8 @@
 from database import employee_data
 import random
-def display_details(employeeID: int):
 
+
+def display_details(employeeID: int):
     last_name = employee_data[employeeID][0]
     first_name = employee_data[employeeID][1]
     full_name = first_name + " " + last_name
@@ -15,17 +16,19 @@ def display_details(employeeID: int):
     print(f"Hourly rate: {hourly_rate}")
     print("")
 
+
 # def generate_total_hours():
 #     total_hours = random.randrange(70, 90)
 #     return total_hours
 
-def calculate_gross (employeeID, hours_worked):
+def calculate_gross(employeeID, hours_worked):
     hourly_rate = float(employee_data[employeeID][3])
     rice_subsidy = 1500
     phone_allowance = float(employee_data[employeeID][4])
     clothing_allowance = float(employee_data[employeeID][5])
     total_gross = round((hourly_rate * hours_worked) + rice_subsidy + phone_allowance + clothing_allowance, 2)
     return total_gross
+
 
 def calculate_sss(income: float):
     last_range = 24750
@@ -44,6 +47,7 @@ def calculate_sss(income: float):
         total_contribution = maximum_contribution
     return round(total_contribution, 2)
 
+
 def calculate_pagibig(income: float):
     employee_contribution = 0
     if income > 1500:
@@ -52,13 +56,15 @@ def calculate_pagibig(income: float):
         employee_contribution = income * 0.01
     return round(employee_contribution, 2)
 
-def calculate_phileath(income: float):
+
+def calculate_philhealth(income: float):
     return round(((income * 0.03) / 2), 2)
 
-def calcuate_witholdingTax(income: float):
+
+def calculate_withholdingTax(income: float):
     sss = calculate_sss(income)
     pagibig = calculate_pagibig(income)
-    philhealth = calculate_phileath(income)
+    philhealth = calculate_philhealth(income)
     total_deductions = sss + pagibig + philhealth
     taxable_income = income - total_deductions
     if taxable_income <= 20832:
@@ -75,8 +81,6 @@ def calcuate_witholdingTax(income: float):
         tax = 200833.33 + (taxable_income - 666667) * 0.35
     return round(tax, 2)
 
+
 def calculate_net(gross: float, withholding_tax):
     return gross - withholding_tax
-
-
-

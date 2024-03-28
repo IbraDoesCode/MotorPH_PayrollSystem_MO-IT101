@@ -41,9 +41,9 @@ while True:
         gross = calculate_gross(emp_ID, hours_worked)
         sss = calculate_sss(gross)
         pagibig = calculate_pagibig(gross)
-        philhealth = calculate_phileath(gross)
+        philhealth = calculate_philhealth(gross)
         total_deductions = sss + pagibig + philhealth
-        withholding_tax = calcuate_witholdingTax(gross)
+        withholding_tax = calculate_withholdingTax(gross)
         net_salary = round(calculate_net(gross, withholding_tax), 2)
 
         print("\n--- Net Salary Details ---")
