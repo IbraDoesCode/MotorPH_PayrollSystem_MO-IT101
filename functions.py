@@ -46,7 +46,9 @@ def display_attendance(empid: int):
 def calculate_weekly_gross(empid, hours_worked):
     rate = employee_data[empid - 1]['hourly_rate']
     rice_subsidy = (1500 * 12) / 52  # calculate weekly rice subsidy
-    weekly_gross = (rate * hours_worked) + rice_subsidy
+    phone_allowance = (employee_data[empid-1]['phone_allowance'] * 12) / 52
+    clothing_allowance = (employee_data[empid-1]['clothing_allowance'] * 12) / 52
+    weekly_gross = (rate * hours_worked) + rice_subsidy + clothing_allowance + phone_allowance
     return round(weekly_gross, 2)
 
 
