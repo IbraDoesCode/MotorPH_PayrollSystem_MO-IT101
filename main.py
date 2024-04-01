@@ -19,7 +19,6 @@ while True:
         display_details(emp_ID)
 
     elif action == "2":
-        # To implement
         emp_ID = int(input("Enter employee ID: "))
         display_attendance(emp_ID)
 
@@ -28,6 +27,7 @@ while True:
         hours_worked = calculate_hours_worked(emp_ID)
         gross = calculate_weekly_gross(emp_ID, hours_worked)
         rate = employee_data[emp_ID - 1]['hourly_rate']
+        print("\n=== Gross Salary Details ===")
         print(f"\nHourly rate: {rate}")
         print(f"Hours worked: {hours_worked:.2f}")
         print(f"Total Gross: {gross}")
@@ -42,15 +42,15 @@ while True:
         philhealth = calculate_philhealth(monthly)
         total_deductions = sss + pagibig + philhealth
         tax = calculate_withholding_tax(gross, sss, pagibig, philhealth)
-        net_salary = round(calculate_net(gross, tax), 2)
+        net_salary = calculate_net(gross, tax)
 
-        print("\n--- Net Salary Details ---")
+        print("\n=== Net Salary Details ===")
         print(f"Gross income: {gross}")
         print(f"SSS contribution: {sss}")
         print(f"Pag-Ibig contribution: {pagibig}")
         print(f"PhilHealth contribution: {philhealth}")
         print(f"Withholding tax: {tax}")
-        print(f"Net salary: {net_salary}")
+        print(f"Net salary: {net_salary:.2f}")
 
     elif action == "5":
         print("Exiting the system...")

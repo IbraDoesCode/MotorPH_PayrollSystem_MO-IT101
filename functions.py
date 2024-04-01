@@ -1,8 +1,8 @@
 from data import *
 
 
-def display_details(empid: int):
-    index = empid - 1
+def display_details(employee_id: int):
+    index = employee_id - 1
     if 0 <= index < len(employee_data):
         employeeID = index
         employee_name = f"{employee_data[employeeID]['first_name']} {employee_data[employeeID]['last_name']}"
@@ -16,10 +16,10 @@ def display_details(empid: int):
         print("Record does not exist")
 
 
-def calculate_hours_worked(empid: int):
+def calculate_hours_worked(employee_id: int):
     total_hours = 0
     for data in attendance_data:
-        if data.get('Employee_ID') == empid:
+        if data.get('Employee_ID') == employee_id:
             # retrieve time in data
             time_in_data = data.get('Time_in').split(":")
             time_in_hour = int(time_in_data[0])
@@ -34,21 +34,22 @@ def calculate_hours_worked(empid: int):
     return total_hours
 
 
-def display_attendance(empid: int):
-    print(f"Attendance records for: {employee_data[empid - 1]['last_name']} "
-          f"{employee_data[empid - 1]['first_name']} \n")
+def display_attendance(employee_id: int):
+    last_name = employee_data[employee_id - 1]['last_name']
+    first_name = employee_data[employee_id - 1]['first_name']
+    print(f"\n=== Attendance records for: {last_name} {first_name} ===\n")
     for data in attendance_data:
-        if data.get('Employee_ID') == empid:
+        if data.get('Employee_ID') == employee_id:
             print(f"Date: {data['Date']}, Time in: {data['Time_in']}, Time out: {data['Time_out']}\n")
-    total_hours = calculate_hours_worked(empid)
+    total_hours = calculate_hours_worked(employee_id)
     print(f"Total hours worked: {total_hours:.2f}")
 
 
-def calculate_weekly_gross(empid, hours_worked):
-    rate = employee_data[empid - 1]['hourly_rate']
+def calculate_weekly_gross(employee_id, hours_worked):
+    rate = employee_data[employee_id - 1]['hourly_rate']
     rice_subsidy = (1500 * 12) / 52  # calculate weekly rice subsidy
-    phone_allowance = (employee_data[empid-1]['phone_allowance'] * 12) / 52
-    clothing_allowance = (employee_data[empid-1]['clothing_allowance'] * 12) / 52
+    phone_allowance = (employee_data[employee_id-1]['phone_allowance'] * 12) / 52
+    clothing_allowance = (employee_data[employee_id-1]['clothing_allowance'] * 12) / 52
     weekly_gross = (rate * hours_worked) + rice_subsidy + clothing_allowance + phone_allowance
     return round(weekly_gross, 2)
 
