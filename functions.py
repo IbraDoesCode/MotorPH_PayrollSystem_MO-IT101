@@ -35,7 +35,8 @@ def calculate_hours_worked(empid: int):
 
 
 def display_attendance(empid: int):
-    print(f"Attendance records for: {employee_data[empid - 1]['last_name']} {employee_data[empid - 1]['first_name']} \n")
+    print(f"Attendance records for: {employee_data[empid - 1]['last_name']} "
+          f"{employee_data[empid - 1]['first_name']} \n")
     for data in attendance_data:
         if data.get('Employee_ID') == empid:
             print(f"Date: {data['Date']}, Time in: {data['Time_in']}, Time out: {data['Time_out']}\n")
