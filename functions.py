@@ -1,17 +1,17 @@
 from data import *
 
 
-def display_details(employee_id: int):
-    index = employee_id - 1
+def view_profile(employeeID: int):
+    index = employeeID - 1
     if 0 <= index < len(employee_data):
         employeeID = index
-        employee_name = f"{employee_data[employeeID]['first_name']} {employee_data[employeeID]['last_name']}"
-        birthday = employee_data[employeeID]['date_of_birth']
-        # Display details to console
+        first_name = employee_data[employeeID]['first_name']
+        last_name = employee_data[employeeID]['last_name']
+        dob = employee_data[employeeID]['date_of_birth']
         print("\n")
-        print(f"EmployeeID: {employeeID + 1}")
-        print(f"Employee Name: {employee_name}")
-        print(f"Date of birth: {birthday}")
+        print(f"Employee ID: {employeeID + 1}")
+        print(f"Name: {first_name} {last_name}")
+        print(f"Date of birth: {dob}")
     else:
         print("Record does not exist")
 

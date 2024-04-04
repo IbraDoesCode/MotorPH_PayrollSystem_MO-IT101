@@ -12,11 +12,11 @@ while True:
     print("4. Calculate weekly net")
     print("5. Exit")
 
-    action = input("Enter your choice (1/2/3/4): ")
+    action = input("Enter your choice (1/2/3/4/5): ")
 
     if action == "1":
         emp_ID = int(input("Enter employee ID: "))
-        display_details(emp_ID)
+        view_profile(emp_ID)
 
     elif action == "2":
         emp_ID = int(input("Enter employee ID: "))
@@ -28,7 +28,7 @@ while True:
         gross = calculate_weekly_gross(emp_ID, hours_worked)
         rate = employee_data[emp_ID - 1]['hourly_rate']
         print("\n=== Gross Salary Details ===")
-        print(f"\nHourly rate: {rate}")
+        print(f"Hourly rate: {rate}")
         print(f"Hours worked: {hours_worked:.2f}")
         print(f"Total Gross: {gross}")
 
